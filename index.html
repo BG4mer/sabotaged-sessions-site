@@ -1,89 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FNF: Sabotaged Sessions — Official Site</title>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-<script defer src="script.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>FNF: VS Impostor — Sabotaged Sessions</title>
+  <meta name="description" content="Official page for FNF: VS Impostor — Sabotaged Sessions. News, team credits, gallery and updates." />
+  <link rel="stylesheet" href="theme.css" />
+  <script defer src="homepage.js"></script>
 </head>
 
 <body>
-<!-- Navigation -->
-<header class="navbar">
-  <div class="logo">
-    <img src="assets/logo.png" alt="Sabotaged Sessions Logo" class="logo-img">
-    <span>Sabotaged Sessions</span>
-  </div>
-  <nav>
-    <a href="index.html" class="active">Home</a>
-    <a href="news.html">News</a>
-    <a href="credits.html">Credits</a>
-    <a href="#">About</a>
-  </nav>
-</header>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="logo">⚠️ Sabotaged Sessions</div>
+    <nav class="nav">
+      <a href="index.html" class="active">Home</a>
+      <a href="news.html">News</a>
+      <a href="credits.html">Credits</a>
+      <a href="gallery.html">Gallery</a>
+    </nav>
+  </header>
 
-<!-- Hero Section -->
-<section class="hero">
-  <div class="hero-content">
-    <h1 class="hero-title">FNF: Sabotaged Sessions</h1>
-    <p class="hero-desc">A chaotic crossover of betrayal, rhythm, and redemption.<br> Join BG4 and the Crew as they fight through corruption and chaos.</p>
-    <div class="hero-buttons">
-      <a href="news.html" class="btn primary">Latest News</a>
-      <a href="https://discord.gg/yourserver" class="btn secondary">Join the Community</a>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="overlay"></div>
+    <div class="hero-text">
+      <h1>Friday Night Funkin': VS Impostor — Sabotaged Sessions</h1>
+      <p>An all-new FNF experience. New weeks. New chaos. New crew.</p>
+      <a href="#news" class="btn">See Latest Updates</a>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Section: About -->
-<section class="about">
-  <h2>⚠️ What Is Sabotaged Sessions?</h2>
-  <p>Sabotaged Sessions is an <strong>ambitious FNF mod</strong> created by the <b>CrewCreators</b> team.  
-  It’s set in the world of impostors and crewmates — where music, story, and chaos collide.  
-  Featuring unique mechanics, intense battles, and deep lore, this mod aims to deliver a complete experience across multiple versions.</p>
-  <div class="version-box">
-    <h3>🧩 Current Progress</h3>
-    <p><b>Demo:</b> In development — 2 full weeks, cutscenes, and new mechanics are being finalized.</p>
-  </div>
-</section>
+  <!-- NEWS SECTION -->
+  <section id="news" class="section">
+    <h2 class="section-title">📰 Latest News</h2>
+    <div id="newsContainer" class="news-grid">
+      <p class="loading">Loading news...</p>
+    </div>
+    <a href="news.html" class="btn more">View All News</a>
+  </section>
 
-<!-- Section: Team Highlights -->
-<section class="team-highlight">
-  <h2>🎤 Meet the Crew</h2>
-  <div class="team-grid">
-    <div class="team-card">
-      <img src="assets/bg4.png" alt="BG4">
-      <h3>BG4</h3>
-      <p>Main Developer / Writer</p>
+  <!-- GALLERY PREVIEW -->
+  <section id="gallery" class="section alt">
+    <h2 class="section-title">🎨 Gallery</h2>
+    <div class="gallery-grid" id="galleryGrid">
+      <!-- JS will fill these -->
+      <div class="loading">Loading gallery...</div>
     </div>
-    <div class="team-card">
-      <img src="assets/jacob.png" alt="Jacob">
-      <h3>Jacob</h3>
-      <p>Composer / Sound Engineer</p>
-    </div>
-    <div class="team-card">
-      <img src="assets/crimson.png" alt="Crimson">
-      <h3>Crimson</h3>
-      <p>Artist / Lore Designer</p>
-    </div>
-    <div class="team-card">
-      <img src="assets/gray.png" alt="Gray">
-      <h3>Gray</h3>
-      <p>Coder / Optimization</p>
-    </div>
-  </div>
-</section>
+    <a href="gallery.html" class="btn more">View Full Gallery</a>
+  </section>
 
-<!-- Section: News Preview -->
-<section class="news-preview">
-  <h2>📰 Latest News</h2>
-  <div id="news-container" class="news-container"></div>
-</section>
+  <!-- ABOUT SECTION -->
+  <section class="section">
+    <h2 class="section-title">About the Mod</h2>
+    <p class="desc">
+      <b>Sabotaged Sessions</b> is a full-scale <b>FNF x Among Us</b> crossover mod developed by the
+      <b>CrewCreators</b> team. Featuring completely new weeks, intense cutscenes, and
+      fresh mechanics — this project is designed to push the limits of <b>Codename Engine</b>.
+    </p>
+    <p class="desc">
+      Expect chaos, lore, and heart — with a mix of comedy, darkness, and high-energy tracks that
+      capture the spirit of both universes.
+    </p>
+    <a href="credits.html" class="btn">Meet the Team</a>
+  </section>
 
-<!-- Footer -->
-<footer>
-  <p>© 2025 CrewCreators — Sabotaged Sessions Team. Built with passion, caffeine, and chaos.</p>
-</footer>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© CrewCreators 2025 • Friday Night Funkin': VS Impostor — Sabotaged Sessions</p>
+    <p class="muted">Built with ❤️ using HTML, CSS, and JavaScript</p>
+  </footer>
 </body>
 </html>
