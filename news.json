@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Demo 1 Released — Weeks 1 & 2",
+    "date": "2025-07-10",
+    "content": "We’ve officially launched Demo 1 of FNF VS Impostor: Sabotaged Sessions! This version includes two full weeks, new sprites, reworked UI, and cutscenes. Remember to disable flashing lights in settings if needed."
+  },
+  {
+    "title": "Development Update — Team Expansion",
+    "date": "2025-07-16",
+    "content": "The CrewCreators team just got bigger! We’ve added new animators, charting experts, and a full-time sound designer. Expect faster updates and more polished songs in Demo 2."
+  },
+  {
+    "title": "Website Test Live",
+    "date": "2025-07-22",
+    "content": "Our official website is now live! Future updates, patch notes, and team announcements will appear here automatically. You can refresh the page to see new posts right after pushing changes to GitHub."
+  }
+]
