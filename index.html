@@ -1,104 +1,89 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>FNF — VS Impostor: Sabotaged Sessions</title>
-<meta name="description" content="Official site for FNF VS Impostor: Sabotaged Sessions — news, demo progress, credits." />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FNF: Sabotaged Sessions — Official Site</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-<script defer src="app.js"></script>
+<script defer src="script.js"></script>
 </head>
-<body class="theme-dark">
-<nav class="nav">
-  <div class="nav-inner">
-    <a class="brand" href="index.html" aria-label="Sabotaged Sessions home">
-      <span class="logo-mark" aria-hidden="true">⚠</span>
-      <span class="brand-text">sabotaged sessions</span>
-    </a>
 
-    <ul class="nav-links" role="menubar">
-      <li><a role="menuitem" href="news.html">news</a></li>
-      <li><a role="menuitem" href="credits.html">credits</a></li>
-      <li><a role="menuitem" class="cta" href="https://discord.com/invite/WqZsg4EAGa" target="_blank" rel="noopener">join discord</a></li>
-    </ul>
+<body>
+<!-- Navigation -->
+<header class="navbar">
+  <div class="logo">
+    <img src="assets/logo.png" alt="Sabotaged Sessions Logo" class="logo-img">
+    <span>Sabotaged Sessions</span>
   </div>
-</nav>
-
-<header class="hero container">
-  <div class="hero-grid">
-    <div class="hero-left">
-      <h1 class="headline">fnf × among us — <span class="accent">sabotaged sessions</span></h1>
-      <p class="lead">A cinematic rhythm mod where imposter paranoia meets rhythm battles. Demo 1 (weeks 1–2) is actively in development — follow progress, news, and dev logs here.</p>
-
-      <div class="hero-ctas">
-        <a class="button primary" href="news.html">latest dev update</a>
-        <a class="button subtle" href="credits.html">meet the crew</a>
-      </div>
-
-      <ul class="features">
-        <li>Animated cutscenes & custom mechanics</li>
-        <li>Task-style HUD & medbay systems</li>
-        <li>Planned multi-demo roadmap</li>
-      </ul>
-    </div>
-
-    <div class="hero-right">
-      <div class="card preview">
-        <div class="preview-visual" aria-hidden="true">
-          <!-- stylised mock gameplay panel -->
-          <div class="mock-topbar">
-            <div class="bar-label">task timer</div>
-            <div class="task-bar"><div class="task-fill" style="width:85%"></div></div>
-          </div>
-          <div class="mock-stage">
-            <div class="bf">BF</div>
-            <div class="op">OP</div>
-          </div>
-          <div class="mock-footer">demo UI preview</div>
-        </div>
-      </div>
-
-      <div class="card meta">
-        <dl>
-          <dt>Status</dt><dd class="status-dot status-wip">in development</dd>
-          <dt>Demo</dt><dd>weeks 1–2 (not released)</dd>
-          <dt>Engine</dt><dd>Codename Engine</dd>
-        </dl>
-      </div>
-    </div>
-  </div>
+  <nav>
+    <a href="index.html" class="active">Home</a>
+    <a href="news.html">News</a>
+    <a href="credits.html">Credits</a>
+    <a href="#">About</a>
+  </nav>
 </header>
 
-<main class="container">
-  <section class="updates card">
-    <header class="section-head">
-      <h2>latest news</h2>
-      <a class="link-muted" href="news.html">view all →</a>
-    </header>
-
-    <div id="homeNews" class="news-grid" aria-live="polite">
-      <!-- populated by app.js -->
-      <div class="skeleton-col"><div class="skeleton-card"></div></div>
-      <div class="skeleton-col"><div class="skeleton-card"></div></div>
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-content">
+    <h1 class="hero-title">FNF: Sabotaged Sessions</h1>
+    <p class="hero-desc">A chaotic crossover of betrayal, rhythm, and redemption.<br> Join BG4 and the Crew as they fight through corruption and chaos.</p>
+    <div class="hero-buttons">
+      <a href="news.html" class="btn primary">Latest News</a>
+      <a href="https://discord.gg/yourserver" class="btn secondary">Join the Community</a>
     </div>
-  </section>
-
-  <section class="roadmap card">
-    <h3>roadmap snapshot</h3>
-    <ol>
-      <li><strong>demo 1</strong> — weeks 1 & 2 (current)</li>
-      <li><strong>demo 2</strong> — weeks 3–5 & extra freeplay</li>
-      <li><strong>demo 3</strong> — fatal universe expansion</li>
-      <li><strong>v1.0</strong> — full rework & polish</li>
-    </ol>
-  </section>
-</main>
-
-<footer class="footer">
-  <div class="foot-inner container">
-    <div>© CrewCreators • Sabotaged Sessions</div>
-    <div class="foot-right"><a class="link-muted" href="https://twitter.com" target="_blank" rel="noopener">twitter</a> · <a class="link-muted" href="https://discord.com/invite/WqZsg4EAGa" target="_blank" rel="noopener">discord</a></div>
   </div>
+</section>
+
+<!-- Section: About -->
+<section class="about">
+  <h2>⚠️ What Is Sabotaged Sessions?</h2>
+  <p>Sabotaged Sessions is an <strong>ambitious FNF mod</strong> created by the <b>CrewCreators</b> team.  
+  It’s set in the world of impostors and crewmates — where music, story, and chaos collide.  
+  Featuring unique mechanics, intense battles, and deep lore, this mod aims to deliver a complete experience across multiple versions.</p>
+  <div class="version-box">
+    <h3>🧩 Current Progress</h3>
+    <p><b>Demo:</b> In development — 2 full weeks, cutscenes, and new mechanics are being finalized.</p>
+  </div>
+</section>
+
+<!-- Section: Team Highlights -->
+<section class="team-highlight">
+  <h2>🎤 Meet the Crew</h2>
+  <div class="team-grid">
+    <div class="team-card">
+      <img src="assets/bg4.png" alt="BG4">
+      <h3>BG4</h3>
+      <p>Main Developer / Writer</p>
+    </div>
+    <div class="team-card">
+      <img src="assets/jacob.png" alt="Jacob">
+      <h3>Jacob</h3>
+      <p>Composer / Sound Engineer</p>
+    </div>
+    <div class="team-card">
+      <img src="assets/crimson.png" alt="Crimson">
+      <h3>Crimson</h3>
+      <p>Artist / Lore Designer</p>
+    </div>
+    <div class="team-card">
+      <img src="assets/gray.png" alt="Gray">
+      <h3>Gray</h3>
+      <p>Coder / Optimization</p>
+    </div>
+  </div>
+</section>
+
+<!-- Section: News Preview -->
+<section class="news-preview">
+  <h2>📰 Latest News</h2>
+  <div id="news-container" class="news-container"></div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>© 2025 CrewCreators — Sabotaged Sessions Team. Built with passion, caffeine, and chaos.</p>
 </footer>
 </body>
 </html>
