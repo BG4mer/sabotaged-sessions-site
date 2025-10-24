@@ -1,28 +1,21 @@
-// Animations
-document.addEventListener("DOMContentLoaded", () => {
-  document.body.classList.add("fade-in");
-});
-
-// Load News
+// Fetch and render news
 fetch('news.json')
   .then(res => res.json())
-  .then(newsData => {
-    const container = document.getElementById('newsContainer');
-    if (!container) return;
-
-    container.innerHTML = '';
-    newsData.forEach(article => {
-      const div = document.createElement('div');
-      div.className = 'news-item';
-      div.innerHTML = `
-        <h2>${article.title}</h2>
-        <p>${article.content}</p>
-        <span class="date">${article.date}</span>
-      `;
-      container.appendChild(div);
-    });
+  .then(data => {
+    const container = document.getElementById('news-container');
+    if (!Array.isArray(data)) {
+      console.error("news.json should be an array!");
+      container.innerHTML = '<p style="color:red">Error: Invalid news format</p>';
+      return;
+    }
+    container.innerHTML = data.map(post => `
+      <div class="news-item">
+        <h3>${post.title}</h3>
+        <p>${post.content}</p>
+        <small>🕓 ${new Date(post.date).toLocaleString()}</small>
+      </div>
+    `).join('');
   })
   .catch(err => {
-    const container = document.getElementById('newsContainer');
-    if (container) container.innerHTML = `<p class="error">Error loading news: ${err}</p>`;
+    document.getElementById('news-container').innerHTML = `<p style="color:red">Error: ${err}</p>`;
   });
