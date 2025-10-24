@@ -1,30 +1,104 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sabotaged Sessions — Home</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>FNF — VS Impostor: Sabotaged Sessions</title>
+<meta name="description" content="Official site for FNF VS Impostor: Sabotaged Sessions — news, demo progress, credits." />
 <link rel="stylesheet" href="style.css">
-<script defer src="script.js"></script>
+<script defer src="app.js"></script>
 </head>
-<body>
-<header>
-  <h1 class="logo">Sabotaged Sessions</h1>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="news.html">News</a>
-    <a href="credits.html">Credits</a>
-  </nav>
+<body class="theme-dark">
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html" aria-label="Sabotaged Sessions home">
+      <span class="logo-mark" aria-hidden="true">⚠</span>
+      <span class="brand-text">sabotaged sessions</span>
+    </a>
+
+    <ul class="nav-links" role="menubar">
+      <li><a role="menuitem" href="news.html">news</a></li>
+      <li><a role="menuitem" href="credits.html">credits</a></li>
+      <li><a role="menuitem" class="cta" href="https://discord.com/invite/WqZsg4EAGa" target="_blank" rel="noopener">join discord</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero container">
+  <div class="hero-grid">
+    <div class="hero-left">
+      <h1 class="headline">fnf × among us — <span class="accent">sabotaged sessions</span></h1>
+      <p class="lead">A cinematic rhythm mod where imposter paranoia meets rhythm battles. Demo 1 (weeks 1–2) is actively in development — follow progress, news, and dev logs here.</p>
+
+      <div class="hero-ctas">
+        <a class="button primary" href="news.html">latest dev update</a>
+        <a class="button subtle" href="credits.html">meet the crew</a>
+      </div>
+
+      <ul class="features">
+        <li>Animated cutscenes & custom mechanics</li>
+        <li>Task-style HUD & medbay systems</li>
+        <li>Planned multi-demo roadmap</li>
+      </ul>
+    </div>
+
+    <div class="hero-right">
+      <div class="card preview">
+        <div class="preview-visual" aria-hidden="true">
+          <!-- stylised mock gameplay panel -->
+          <div class="mock-topbar">
+            <div class="bar-label">task timer</div>
+            <div class="task-bar"><div class="task-fill" style="width:85%"></div></div>
+          </div>
+          <div class="mock-stage">
+            <div class="bf">BF</div>
+            <div class="op">OP</div>
+          </div>
+          <div class="mock-footer">demo UI preview</div>
+        </div>
+      </div>
+
+      <div class="card meta">
+        <dl>
+          <dt>Status</dt><dd class="status-dot status-wip">in development</dd>
+          <dt>Demo</dt><dd>weeks 1–2 (not released)</dd>
+          <dt>Engine</dt><dd>Codename Engine</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
 </header>
 
-<section class="hero">
-  <h2>Welcome to the Official Sabotaged Sessions Website</h2>
-  <p>Stay tuned for news, dev updates, and demo progress.</p>
-  <a href="news.html" class="btn">View News</a>
-</section>
+<main class="container">
+  <section class="updates card">
+    <header class="section-head">
+      <h2>latest news</h2>
+      <a class="link-muted" href="news.html">view all →</a>
+    </header>
 
-<footer>
-  <p>© 2025 Sabotaged Sessions Team</p>
+    <div id="homeNews" class="news-grid" aria-live="polite">
+      <!-- populated by app.js -->
+      <div class="skeleton-col"><div class="skeleton-card"></div></div>
+      <div class="skeleton-col"><div class="skeleton-card"></div></div>
+    </div>
+  </section>
+
+  <section class="roadmap card">
+    <h3>roadmap snapshot</h3>
+    <ol>
+      <li><strong>demo 1</strong> — weeks 1 & 2 (current)</li>
+      <li><strong>demo 2</strong> — weeks 3–5 & extra freeplay</li>
+      <li><strong>demo 3</strong> — fatal universe expansion</li>
+      <li><strong>v1.0</strong> — full rework & polish</li>
+    </ol>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="foot-inner container">
+    <div>© CrewCreators • Sabotaged Sessions</div>
+    <div class="foot-right"><a class="link-muted" href="https://twitter.com" target="_blank" rel="noopener">twitter</a> · <a class="link-muted" href="https://discord.com/invite/WqZsg4EAGa" target="_blank" rel="noopener">discord</a></div>
+  </div>
 </footer>
 </body>
 </html>
