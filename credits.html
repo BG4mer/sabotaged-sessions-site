@@ -1,89 +1,176 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sabotaged Sessions — Credits</title>
-<link rel="stylesheet" href="style.css">
-<script defer src="script.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Credits — Sabotaged Sessions</title>
+  <meta name="description" content="Credits for FNF: VS Impostor — Sabotaged Sessions. Meet the team." />
+  <link rel="stylesheet" href="credits-style.css">
 </head>
-
 <body>
-<header>
-  <h1 class="logo">Sabotaged Sessions</h1>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="news.html">News</a>
-    <a href="credits.html" class="active">Credits</a>
-  </nav>
-</header>
+  <header class="site-header">
+    <div class="brand">
+      <div class="logo">⚠️</div>
+      <div>
+        <h1>Sabotaged Sessions</h1>
+        <p class="muted">Credits — CrewCreators</p>
+      </div>
+    </div>
 
-<section class="credits-header">
-  <h2>Meet the Crew Behind the Chaos</h2>
-  <p>Every world, every song, every scream — made possible by this insane team.</p>
-</section>
+    <nav class="topnav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="news.html">News</a>
+      <a href="credits.html" class="active">Credits</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </header>
 
-<section class="credits-grid">
-  <div class="credit-card">
-    <h3>🎮 BG4</h3>
-    <p><strong>Role:</strong> Project Leader, Writer, & Animator</p>
-    <p><strong>Info:</strong> The mastermind behind Sabotaged Sessions. Leads the creative direction, writes most of the scripts, and brings the energy to every update.</p>
-  </div>
+  <main class="container" id="main">
+    <section class="controls">
+      <div class="search">
+        <label for="searchInput" class="sr-only">Search contributors</label>
+        <input id="searchInput" placeholder="Search people or roles (e.g. 'composer', 'jacob')" />
+      </div>
 
-  <div class="credit-card">
-    <h3>🎵 Jacob</h3>
-    <p><strong>Role:</strong> Lead Composer & Sound Designer</p>
-    <p><strong>Info:</strong> Known for his aggressive mix of chaos and melody, Jacob handles the mod’s entire soundscape — from music to glitchy ambiance.</p>
-  </div>
+      <div class="filters">
+        <label for="roleSelect">Filter role</label>
+        <select id="roleSelect">
+          <option value="">— all roles —</option>
+        </select>
+        <button id="exportJson" class="btn subtle">Export JSON</button>
+        <button id="exportCsv" class="btn subtle">Export CSV</button>
+      </div>
+    </section>
 
-  <div class="credit-card">
-    <h3>🖌️ Crimson</h3>
-    <p><strong>Role:</strong> Visual Artist & Lore Designer</p>
-    <p><strong>Info:</strong> Designs the visual atmosphere and character lore, giving the mod its distinct tone between light and corruption.</p>
-  </div>
+    <section id="creditsGrid" class="grid" aria-live="polite">
+      <!-- JS populates cards here -->
+      <div class="loader" id="loader">Loading credits…</div>
+    </section>
 
-  <div class="credit-card">
-    <h3>💻 Gray</h3>
-    <p><strong>Role:</strong> Programmer & Debug Specialist</p>
-    <p><strong>Info:</strong> Keeps the mod functional, stable, and full of polish. Also the one who fixes what Jacob breaks.</p>
-  </div>
+    <section class="notes">
+      <h3>Maintaining credits</h3>
+      <p class="muted">Edit <code>credits.json</code> in your repo and push — this page will render the new list automatically. Keep roles consistent (role → people → {name, credit}).</p>
+    </section>
+  </main>
 
-  <div class="credit-card">
-    <h3>🎨 Rose</h3>
-    <p><strong>Role:</strong> Character Artist & Concept Creator</p>
-    <p><strong>Info:</strong> Brings emotion into the characters with her expressive art and emotional storyboards.</p>
-  </div>
+  <footer class="site-footer">
+    <small>© CrewCreators — Sabotaged Sessions • Built for the community</small>
+  </footer>
 
-  <div class="credit-card">
-    <h3>🎧 Œ4ÆŇGĒ</h3>
-    <p><strong>Role:</strong> Sound FX & Audio Mixing</p>
-    <p><strong>Info:</strong> The noise scientist. Manages sound FX layers, voice processing, and the mod’s unique chromatic sounds.</p>
-  </div>
+  <script>
+  // credits page script (self-contained)
+  (function () {
+    const JSON_PATH = 'credits.json';
+    const grid = document.getElementById('creditsGrid');
+    const loader = document.getElementById('loader');
+    const roleSelect = document.getElementById('roleSelect');
+    const searchInput = document.getElementById('searchInput');
+    const exportJsonBtn = document.getElementById('exportJson');
+    const exportCsvBtn = document.getElementById('exportCsv');
 
-  <div class="credit-card">
-    <h3>🧠 Tenebris</h3>
-    <p><strong>Role:</strong> Story Co-Writer & Lore Manager</p>
-    <p><strong>Info:</strong> Oversees the worldbuilding — from the mythos of the Crewpostors to the corruption timeline of the Impostors.</p>
-  </div>
+    let creditsData = [];
 
-  <div class="credit-card">
-    <h3>⚙️ Crewcreators</h3>
-    <p><strong>Role:</strong> Support Team</p>
-    <p><strong>Info:</strong> Helps with charting, testing, and coordinating all community-related work for Sabotaged Sessions.</p>
-  </div>
-</section>
+    function safeText(t){ return (t||'').toString(); }
+    function createCard(role, person){
+      const card = document.createElement('article');
+      card.className = 'card';
+      card.dataset.role = role;
+      card.innerHTML = `
+        <div class="avatar" aria-hidden="true">${(person.name||' ')[0].toUpperCase()}</div>
+        <div class="card-body">
+          <h4 class="person-name">${escapeHtml(person.name)}</h4>
+          <div class="person-role">${escapeHtml(role)}</div>
+          <p class="person-credit">${escapeHtml(person.credit||'')}</p>
+        </div>
+      `;
+      return card;
+    }
+    function escapeHtml(s){
+      return String(s).replace(/[&<>"']/g, (m) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+    }
 
-<section class="special-thanks">
-  <h2>Special Thanks</h2>
-  <ul>
-    <li>Codename Engine team — for keeping the modding spirit alive.</li>
-    <li>VS Impostor Team — for inspiring this chaos-fueled continuation.</li>
-    <li>Our fans — for every share, playthrough, and meme. You keep the fire going.</li>
-  </ul>
-</section>
+    function renderList(data){
+      grid.innerHTML = '';
+      const frag = document.createDocumentFragment();
+      data.forEach(group => {
+        (group.people||[]).forEach(person => {
+          frag.appendChild(createCard(group.role, person));
+        });
+      });
+      grid.appendChild(frag);
+    }
 
-<footer>
-  <p>© 2025 Sabotaged Sessions Team. All rights reserved.</p>
-</footer>
+    function populateRoleFilter(data){
+      const roles = data.map(r=>r.role).filter(Boolean);
+      roleSelect.innerHTML = '<option value="">— all roles —</option>' + roles.map(r=>`<option value="${escapeHtml(r)}">${escapeHtml(r)}</option>`).join('');
+    }
+
+    function applyFilters(){
+      const q = (searchInput.value||'').trim().toLowerCase();
+      const sel = (roleSelect.value||'').toLowerCase();
+      const cards = grid.querySelectorAll('.card');
+      cards.forEach(card => {
+        const name = card.querySelector('.person-name').textContent.toLowerCase();
+        const role = card.dataset.role.toLowerCase();
+        const credit = card.querySelector('.person-credit').textContent.toLowerCase();
+        const matchesSearch = !q || name.includes(q) || role.includes(q) || credit.includes(q);
+        const matchesRole = !sel || role === sel;
+        card.style.display = (matchesSearch && matchesRole) ? '' : 'none';
+      });
+    }
+
+    function flattenToCSV(data){
+      const rows = [['role','name','credit']];
+      data.forEach(group => {
+        (group.people||[]).forEach(p=>{
+          rows.push([group.role, p.name || '', p.credit || '']);
+        });
+      });
+      return rows.map(r => r.map(cell => `"${String(cell).replace(/"/g,'""')}"`).join(',')).join('\\n');
+    }
+
+    function download(filename, content, mime='text/plain'){
+      const blob = new Blob([content], {type: mime});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = filename; document.body.appendChild(a); a.click();
+      a.remove(); URL.revokeObjectURL(url);
+    }
+
+    async function loadCredits(){
+      loader.style.display = '';
+      try {
+        const res = await fetch(JSON_PATH + '?_=' + Date.now());
+        if(!res.ok) throw new Error('Failed to load credits.json (' + res.status + ')');
+        const j = await res.json();
+        if(!Array.isArray(j)) throw new Error('credits.json root must be an array');
+        creditsData = j;
+        renderList(creditsData);
+        populateRoleFilter(creditsData);
+        loader.style.display = 'none';
+      } catch(err){
+        loader.textContent = 'Error loading credits: ' + err.message;
+        console.error(err);
+      }
+    }
+
+    // events
+    roleSelect.addEventListener('change', applyFilters);
+    searchInput.addEventListener('input', applyFilters);
+    exportJsonBtn.addEventListener('click', ()=> download('credits-export.json', JSON.stringify(creditsData, null, 2), 'application/json'));
+    exportCsvBtn.addEventListener('click', ()=> download('credits-export.csv', flattenToCSV(creditsData), 'text/csv'));
+
+    // startup
+    loadCredits();
+
+    // keyboard accessibility: focus search on "/" key
+    window.addEventListener('keydown', function(e){
+      if(e.key === '/' && document.activeElement !== searchInput){
+        e.preventDefault();
+        searchInput.focus();
+      }
+    });
+  })();
+  </script>
 </body>
 </html>
