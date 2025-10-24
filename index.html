@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>FNF — VS Impostor: Sabotaged Sessions News</title>
+  <meta name="theme-color" content="#0f1720" />
+  <style>
+    body {
+      margin:0;
+      font-family: system-ui, sans-serif;
+      background:#0b0f14;
+      color:#e8eef2;
+      padding:20px;
+    }
+    header {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:24px;
+    }
+    h1 { font-size:20px; margin:0; }
+    .btn {
+      padding:8px 12px;
+      background:#ff3344;
+      color:white;
+      border:none;
+      border-radius:6px;
+      cursor:pointer;
+    }
+    #news-container {
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+      max-width:800px;
+      margin:auto;
+    }
+    .news-card {
+      background:#11161c;
+      border:1px solid rgba(255,255,255,0.05);
+      border-radius:8px;
+      padding:16px;
+    }
+    .news-title { font-weight:700; font-size:18px; }
+    .news-date { color:#97a0aa; font-size:13px; margin-bottom:6px; }
+    footer {
+      margin-top:30px;
+      color:#888;
+      text-align:center;
+      font-size:13px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>📰 Sabotaged Sessions — Official News</h1>
+    <button class="btn" id="refresh">Reload News</button>
+  </header>
+
+  <main id="news-container">
+    <div style="color:#97a0aa;">Loading news...</div>
+  </main>
+
+  <footer>
+    <p>© 2025 CrewCreators | Updated <span id="updateTime">--</span></p>
+  </footer>
+
+  <script>
+    const newsContainer = document.getElementById("news-container");
+    const updateTime = document.getElementById("updateTime");
+    const refreshButton = document.getElementById("refresh");
+
+    async function loadNews() {
+      try {
+        newsContainer.innerHTML = "<div style='color:#97a0aa;'>Loading latest news...</div>";
+
+        const res = await fetch("news.json?" + Date.now()); // cache-bust
+        if (!res.ok) throw new Error("Failed to fetch news.json");
+
+        const newsData = await res.json();
+        newsContainer.innerHTML = "";
+
+        newsData.forEach(item => {
+          const card = document.createElement("div");
+          card.className = "news-card";
+          card.innerHTML = `
+            <div class="news-title">${item.title}</div>
+            <div class="news-date">${item.date}</div>
+            <div>${item.content}</div>
+          `;
+          newsContainer.appendChild(card);
+        });
+
+        updateTime.textContent = new Date().toLocaleString();
+      } catch (err) {
+        newsContainer.innerHTML = `<div style='color:#ff5555;'>Error: ${err.message}</div>`;
+      }
+    }
+
+    refreshButton.addEventListener("click", loadNews);
+    loadNews();
+  </script>
+</body>
+</html>
