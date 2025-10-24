@@ -64,3 +64,50 @@ footer {
   padding: 15px;
   margin-top: 40px;
 }
+.credits-header {
+  text-align: center;
+  margin-top: 80px;
+}
+
+.credits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  padding: 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.credit-card {
+  background: #161616;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px #111;
+  transition: transform .3s, box-shadow .3s;
+}
+
+.credit-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 15px #ff4747;
+}
+
+.credit-card h3 {
+  color: #ff4747;
+  margin-bottom: 10px;
+}
+
+.special-thanks {
+  text-align: center;
+  padding: 40px;
+  background: #0f0f0f;
+}
+
+.special-thanks ul {
+  list-style: none;
+  padding: 0;
+}
+
+.special-thanks li {
+  margin: 10px 0;
+  color: #ccc;
+}
